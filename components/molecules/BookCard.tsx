@@ -21,7 +21,7 @@ export default function BookCard({ title, author, coverImageUrl, slug }: BookCar
                 className='transition-opacity duration-300 ease-in-out hover:opacity-90'
             />
             <div className='p-2'>
-                <h3 className='text-sm font-bold truncate'>{title}</h3>
+                <h2 className='text-sm font-bold truncate'>{title}</h2>
                 <p className='text-xs text-gray-600 truncate'>{author}</p>
                 <Link href={`books/${slug}`}>
                     <Button className='text-xs mt-2 w-full'>More Details</Button>
