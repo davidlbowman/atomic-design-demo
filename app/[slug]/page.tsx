@@ -1,9 +1,36 @@
+import type { Metadata } from 'next'
 import Heading from '@/atoms/Heading'
 import BookCard from '@/molecules/BookCard'
 import { bookList } from '@/data/bookList'
+import { fetchBookBySlug } from '@/utils/fetchBooks'
+
+export async function generateStaticParams() {
+    return bookList.map(book => ({
+        slug: book.slug
+    }))
+}
+export async function generateMetadata({
+    params
+}: {
+    params: { slug: string }
+}): Promise<Metadata> {
+    const book = fetchBookBySlug(params.slug)
+    if (!book) {
+        return {
+            title: 'Book not found',
+            description: 'The requested book could not be found.'
+        }
+    }
+    const { title, description } = book
+    const metadata = {
+        title: title,
+        description: description
+    }
+    return metadata
+}
 
 export default function BookDetailPage({ params }: { params: { slug: string } }) {
-    const book = bookList.find(book => book.slug === params.slug)
+    const book = fetchBookBySlug(params.slug)
 
     if (!book) {
         return (
