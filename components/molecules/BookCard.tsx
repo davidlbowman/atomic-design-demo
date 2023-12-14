@@ -23,7 +23,7 @@ export default function BookCard({ title, author, coverImageUrl, slug }: BookCar
             <div className='p-2'>
                 <h3 className='text-sm font-bold truncate'>{title}</h3>
                 <p className='text-xs text-gray-600 truncate'>{author}</p>
-                <Link href={`/${slug}`}>
+                <Link href={`books/${slug}`}>
                     <Button className='text-xs mt-2 w-full'>More Details</Button>
                 </Link>
             </div>
