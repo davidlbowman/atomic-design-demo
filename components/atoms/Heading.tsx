@@ -8,5 +8,5 @@ interface HeadingProps {
 
 export default function Heading({ level, children, className = '' }: HeadingProps) {
     const Tag = `h${level}` as `h${HeadingProps['level']}`
-    return <Tag className={`${className}`}>{children}</Tag>
+    return <Tag className={className}>{children}</Tag>
 }
